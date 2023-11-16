@@ -1,10 +1,12 @@
 ﻿// Copyright (c) Microsoft Corporation.
 // Licensed under the MIT License.
 
-using Microsoft.UI.Xaml.Controls;
-using Microsoft.Web.WebView2.Core;
 using System;
 using System.Diagnostics;
+using System.IO;
+using Microsoft.UI.Xaml.Controls;
+using Microsoft.Web.WebView2.Core;
+using Windows.ApplicationModel;
 using Windows.Data.Json;
 using Windows.Media;
 using Windows.UI;
@@ -94,6 +96,15 @@ namespace JavaScriptVideoSample
         /// <param name="e">Details about the load operation.</param>
         private void OnLoaded(object sender, RoutedEventArgs e)
         {
+            var architecture = Package.Current.Id.Architecture.ToString().ToLower();
+            var localFolder = Package.Current.InstalledLocation;
+            var fixedPath = Path.Combine(localFolder.Path, "WebView2Runtime." + architecture);
+
+            Debug.WriteLine($"Launch path [{localFolder.Path}]");
+            Debug.WriteLine($"FixedRuntime path [{fixedPath}]");
+
+            Environment.SetEnvironmentVariable("WEBVIEW2_BROWSER_EXECUTABLE_FOLDER", fixedPath);
+
             // Create the WebView and point it at the initial URL to begin loading the app's UI.
             // The WebView is not added to the XAML page until the NavigationCompleted event fires.
             webView = new WebView2();
