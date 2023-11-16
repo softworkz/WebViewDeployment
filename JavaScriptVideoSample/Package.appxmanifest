@@ -4,13 +4,12 @@
   xmlns="http://schemas.microsoft.com/appx/manifest/foundation/windows10"
   xmlns:mp="http://schemas.microsoft.com/appx/2014/phone/manifest"
   xmlns:uap="http://schemas.microsoft.com/appx/manifest/uap/windows10"
-  xmlns:rescap="http://schemas.microsoft.com/appx/manifest/foundation/windows10/restrictedcapabilities"
-  IgnorableNamespaces="uap mp rescap">
+  IgnorableNamespaces="uap mp">
 
   <Identity
     Name="0843fc06-6654-434e-bf9c-e248e6a923be"
     Publisher="CN=admin"
-    Version="1.0.1.0" />
+    Version="1.0.3.0" />
 
   <mp:PhoneIdentity PhoneProductId="0843fc06-6654-434e-bf9c-e248e6a923be" PhonePublisherId="00000000-0000-0000-0000-000000000000"/>
 
@@ -54,7 +53,7 @@
          Usage of this capability requires approval from Microsoft. Work with your Microsoft
          business representative if you need this capability.
     -->
-    <rescap:Capability Name="hevcPlayback" />
+    <!--<rescap:Capability Name="hevcPlayback" />-->
     <!-- This capability grants the app the ability to play PlayReady content. This sample doesn't
          actually use any PlayReady content; the capability is listed here for demonstration
          purposes. If your app needs to be able to play PlayReady content, you will need to
